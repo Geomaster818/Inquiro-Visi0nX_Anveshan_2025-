@@ -14,7 +14,7 @@ How to run locally:
    npm start
 
 4. Open in browser:
-   http://localhost:3000/paperbank.html
+   Open the file home.html
 
 Notes:
 - Three sample PDFs were copied into public/uploads/papers/.
