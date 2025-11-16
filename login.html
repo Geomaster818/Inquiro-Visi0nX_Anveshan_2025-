@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inquiro — Login</title>
+
+<style>
+:root{
+  --bg-0:#08090b;
+  --bg-1:#0d0f12;
+  --accent:#00e6f0;
+  --panel:rgba(255,255,255,0.04);
+}
+
+/* Base */
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,var(--bg-0),var(--bg-1));
+  color:white;
+}
+
+/* Login Card */
+.login-card{
+  width:350px;
+  padding:35px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 22px rgba(0,230,240,0.25);
+  animation:fadeIn .8s ease;
+  text-align:center;
+}
+
+/* Logo */
+.logo{
+  width:75px;
+  height:75px;
+  margin:0 auto 10px;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--accent),#66f0ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:800;
+  font-size:28px;
+  color:#00161a;
+  box-shadow:0 0 18px rgba(0,230,240,0.4);
+}
+
+/* Title */
+.login-title{
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:20px;
+  text-shadow:0 0 12px rgba(0,230,240,0.5);
+}
+
+/* Input Field */
+.input{
+  width:100%;
+  padding:12px;
+  margin-top:14px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#c8f9ff;
+  font-size:14px;
+  outline:none;
+  transition:.2s ease;
+}
+
+.input:focus{
+  border-color:var(--accent);
+  background:rgba(255,255,255,0.06);
+  box-shadow:0 0 8px rgba(0,230,240,0.5);
+}
+
+/* Button */
+.btn{
+  width:100%;
+  padding:12px;
+  margin-top:22px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,var(--accent),#66f0ff);
+  color:#002426;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  transition:.25s ease;
+  box-shadow:0 0 16px rgba(0,230,240,0.3);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 22px rgba(0,230,240,0.55);
+}
+
+.btn:active{
+  transform:scale(.96);
+}
+
+/* Small Links */
+.small-text{
+  margin-top:18px;
+  font-size:13px;
+  color:#8ad7df;
+}
+
+.small-text a{
+  color:var(--accent);
+  text-decoration:none;
+  transition:.2s ease;
+}
+
+.small-text a:hover{
+  color:#b8fcff;
+  text-shadow:0 0 6px rgba(0,230,240,0.7);
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <div class="logo">IQ</div>
+
+    <div class="login-title">Welcome </div>
+
+    <input type="text" class="input" placeholder="Email or Username">
+    <input type="password" class="input" placeholder="Password">
+
+ <button class="btn"  >
+    Login
+</button>
+
+
+    <div class="small-text">
+        Forgot your password? <a href="#">Reset</a>
+    </div>
+
+    <div class="small-text">
+        Don’t have an account? <a href="#">Sign Up</a>
+    </div>
+
+</div>
+
+</body>
+</html>

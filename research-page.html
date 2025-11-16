@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="sidebar (1).css">
+<title>Neon Input with Warning</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Neon Wrapper Box */
+    .neon-wrapper {
+        margin-top: 90px;
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background: #000;
+        position: relative;
+
+        /* Neon glow */
+        border: 3px solid transparent;
+        background-image: linear-gradient(#000, #000),
+            linear-gradient(135deg, #00f5ff, #00ff6a);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow: 0 0 18px #00f5ff, 0 0 24px #00ff6a;
+    }
+
+    input {
+        flex: 1;
+        font-size: 18px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #00f5ff;
+    }
+
+    /* neon attach icon */
+    .attach-icon {
+        width: 28px;
+        height: 28px;
+        margin-left: 12px;
+        filter: drop-shadow(0 0 6px #00f5ff) drop-shadow(0 0 10px #00ff6a);
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .attach-icon:hover {
+        filter: drop-shadow(0 0 12px #00f5ff) drop-shadow(0 0 18px #00ff6a);
+        transform: scale(1.1);
+    }
+
+    /* Neon red warning text */
+    .warning-text {
+        margin-top: 12px;
+        font-size: 16px;
+        text-align: center;
+
+        background: linear-gradient(90deg, #ff6b6b, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        text-shadow:
+            0 0 8px #ff3b3b,
+            0 0 14px #ff0000,
+            0 0 24px #ff0000;
+
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    /* Neon subscription box */
+    .subscribe-box {
+        margin-top: 14px;
+        padding: 12px 18px;
+        text-align: center;
+        width: fit-content;
+
+        font-size: 10px;
+        color: #bfffd0;
+
+        border-radius: 10px;
+        background: #000;
+
+        /* neon border */
+        border: 3px solid transparent;
+        background-image: linear-gradient(#000, #000),
+            linear-gradient(135deg, #00f5ff, #00ff6a);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+
+        box-shadow:
+            0 0 12px #00f5ff,
+            0 0 18px #00ff6a;
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- Neon Input Box -->
+<div class="neon-wrapper">
+    <input type="text" placeholder="add a text">
+    
+    <!-- Inline neon attach icon -->
+    <svg class="attach-icon" viewBox="0 0 24 24" fill="none" stroke="url(#neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <defs>
+            <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f5ff"/>
+                <stop offset="100%" stop-color="#00ff6a"/>
+            </linearGradient>
+        </defs>
+        <path d="M21.44 11.05l-8.49 8.49c-2.34 2.34-6.14 2.34-8.49 0-2.34-2.34-2.34-6.14 0-8.49l9.9-9.9c1.56-1.56 4.09-1.56 5.66 0 1.56 1.56 1.56 4.09 0 5.66l-9.19 9.19c-.78.78-2.05.78-2.83 0-.78-.78-.78-2.05 0-2.83l8.48-8.49"/>
+    </svg>
+</div>
+
+<!-- Warning message -->
+<div class="warning-text">⚠ File should not exceed 5MB</div>
+
+<!-- Subscription required box -->
+<div class="subscribe-box">
+    Subscribe to upload files larger than 5MB
+</div>
+<div class="side-menu" aria-hidden="false">
+    <div class="menu-title">Menu</div>
+
+    <a class="menu-item active" href="C:\Users\saina\OneDrive\Desktop\website3\Home\home.html">
+        <span class="menu-icon"><img src="C:\Users\saina\OneDrive\Desktop\website3\Home\icons\home.svg" width="22"></span>
+        <span class="label">Home</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Community\community.html">
+        <span class="menu-icon"><img src="icons/community.svg" width="22"></span>
+        <span class="label">Community</span>
+    </a>
+
+    <a class="menu-item" href="create.html">
+        <span class="menu-icon"><img src="icons/create.svg" width="22"></span>
+        <span class="label">Create</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\paper bank\public\paperbank.html">
+        <span class="menu-icon"><img src="icons/paperbank.svg" width="22"></span>
+        <span class="label">Paper Bank</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Subscriptions\subscriptions.html">
+        <span class="menu-icon"><img src="icons/subscriptions.svg" width="22"></span>
+        <span class="label">Subscriptions</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Profile\profile.html">
+        <span class="menu-icon"><img src="icons/profile.svg" width="22"></span>
+        <span class="label">Profile</span>
+    </a>
+
+    <div class="collapse-indicator">•••</div>
+</div>
+<script src=":sidebar.js"></script>
+
+</body>
+</html>
+

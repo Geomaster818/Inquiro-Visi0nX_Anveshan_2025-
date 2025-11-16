@@ -1,0 +1,101 @@
+/* ===== Global Styles ===== */
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background: #0d0d0f;
+    color: #e0e0e0;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+/* ===== Header ===== */
+.header h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    color: #00eaff;
+    text-shadow: 0 0 12px #00eaff;
+    animation: glowIn 1.2s ease;
+}
+
+@keyframes glowIn {
+    from { opacity: 0; text-shadow: none; }
+    to { opacity: 1; text-shadow: 0 0 12px #00eaff; }
+}
+
+.role-tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    animation: fadeUp 0.9s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tag {
+    padding: 6px 18px;
+    border-radius: 25px;
+    background: rgba(0, 234, 255, 0.15);
+    border: 1px solid #00eaff;
+    color: #00eaff;
+    box-shadow: 0 0 12px rgba(0, 234, 255, 0.5);
+}
+
+/* ===== Profile Section ===== */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 40px;
+    animation: fadeUp 0.9s ease;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #00eaff;
+    box-shadow: 0 0 18px #00eaff;
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 18px #00eaff; }
+    50% { box-shadow: 0 0 32px #00eaff; }
+    100% { box-shadow: 0 0 18px #00eaff; }
+}
+
+/* ===== Message Button ===== */
+.message-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: #00eaff;
+    color: #0d0d0f;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 14px #00eaff;
+    transition: 0.3s;
+}
+
+.message-btn:hover {
+    background: transparent;
+    color: #00eaff;
+    border: 1px solid #00eaff;
+    box-shadow: 0 0 34px #00eaff;
+    transform: scale(1.05);
+}
+

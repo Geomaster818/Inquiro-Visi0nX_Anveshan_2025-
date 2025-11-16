@@ -1,0 +1,242 @@
+/* ===== Menu Title ===== */
+.menu-title {
+    color: #00e6f0;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== Menu Links ===== */
+.menu-link {
+    text-decoration: none;
+    color: #e6faff;
+    padding: 10px 12px;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+
+    transition: 0.25s;
+}
+
+.menu-link:hover {
+    background: rgba(0, 230, 240, 0.12);
+    border-color: #00e6f0;
+    color: white;
+    transform: translateX(6px);
+}
+
+body {
+    background: #0d0f12;
+    font-family: Inter, sans-serif;
+    color: #e6faff;
+    margin: 0;
+}
+
+.container {
+    width: 85%;
+    margin: 40px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #00e6f0;
+}
+
+.subtitle {
+    color: #9fb6bd;
+    margin-top: -10px;
+}
+
+.plan-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.plan-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.plan-features {
+    flex-grow: 1; /* takes remaining space and pushes button down */
+}
+
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 22px rgba(0,230,240,0.15);
+}
+
+.plan-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00e6f0;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 14px;
+    line-height: 1.7;
+}
+
+.select-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: #00e6f0;
+    border: none;
+    color: #002426;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.payment-panel {
+    width: 90%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+
+.pay-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.payment-options {
+    display: flex;
+    gap: 12px;
+}
+
+.pay-option {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    background: transparent;              
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    color: rgba(255, 255, 255, 0.85);     
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.pay-option.active {
+    background: rgba(0,230,240,0.2);
+    border-color: #00e6f0;
+}
+
+.field-group {
+    display: none;
+    margin-top: 18px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field-group.active {
+    display: flex;
+}
+
+input {
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: white;
+    border-radius: 10px;
+}
+
+.two-fields {
+    display: flex;
+    gap: 12px;
+}
+
+.pay-btn {
+    margin-top: 22px;
+    padding: 14px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    /* Colors */
+    background: linear-gradient(90deg, #00e6f0, #6ffaff);
+    color: #002426;
+
+    /* Animation base */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow + lift on hover */
+.pay-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 230, 240, 0.35);
+}
+
+/* Press effect */
+.pay-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* Shine animation */
+.pay-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.25);
+    transform: skewX(-30deg);
+    transition: 0.5s;
+}
+
+.pay-btn:hover::before {
+    left: 150%;
+}
+
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: #0f1114;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.close-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #00e6f0;
+    border: none;
+    color: #002426;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}

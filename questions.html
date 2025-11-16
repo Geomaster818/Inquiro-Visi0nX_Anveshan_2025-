@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="C:\Users\Dell\Desktop\website\sidebar (1).css">
+<title>Neon Mic Input</title>
+
+<style>
+
+    body {
+        margin: 0;
+        background: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Neon wrapper around input + icon */
+    .neon-input-box {
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: #000;
+
+        border: 3px solid transparent;
+        background-image: linear-gradient(#000, #000),
+            linear-gradient(135deg, #00f5ff, #00ff6a);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+
+        box-shadow: 0 0 18px #00f5ff, 0 0 26px #00ff6a;
+
+        transition: 0.25s ease;
+    }
+
+    /* Glow stronger on hover */
+    .neon-input-box:hover {
+        box-shadow: 0 0 28px #00f5ff, 0 0 40px #00ff6a;
+        transform: scale(1.03);
+    }
+
+    /* Input styling */
+    .neon-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        color: #00f5ff;
+    }
+
+    .neon-input::placeholder {
+        color: #00dbff88;
+        letter-spacing: 0.5px;
+    }
+
+    /* Neon mic icon */
+    .mic-icon {
+        width: 28px;
+        height: 28px;
+        margin-left: 14px;
+        cursor: pointer;
+
+        stroke: url(#micGradient);
+        filter: drop-shadow(0 0 6px #00f5ff) drop-shadow(0 0 12px #00ff6a);
+        transition: 0.2s;
+    }
+
+    .mic-icon:hover {
+        transform: scale(1.13);
+        filter: drop-shadow(0 0 12px #00f5ff) drop-shadow(0 0 20px #00ff6a);
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- Input Box -->
+<div class="neon-input-box">
+
+    <input type="text" class="neon-input" placeholder="Ask any question?">
+
+    <!-- Inline Neon Mic Icon -->
+    <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <defs>
+            <linearGradient id="micGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f5ff"/>
+                <stop offset="100%" stop-color="#00ff6a"/>
+            </linearGradient>
+        </defs>
+
+        <!-- mic shape -->
+        <path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4z"/>
+        <path d="M19 10a7 7 0 0 1-14 0"/>
+        <line x1="12" y1="17" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+    </svg>
+
+</div>
+<div class="side-menu" aria-hidden="false">
+    <div class="menu-title">Menu</div>
+
+    <a class="menu-item active" href="C:\Users\saina\OneDrive\Desktop\website3\Home\home.html">
+        <span class="menu-icon"><img src="C:\Users\saina\OneDrive\Desktop\website3\Home\icons\home.svg" width="22"></span>
+        <span class="label">Home</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Community\community.html">
+        <span class="menu-icon"><img src="icons/community.svg" width="22"></span>
+        <span class="label">Community</span>
+    </a>
+
+    <a class="menu-item" href="create.html">
+        <span class="menu-icon"><img src="icons/create.svg" width="22"></span>
+        <span class="label">Create</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\paper bank\public\paperbank.html">
+        <span class="menu-icon"><img src="icons/paperbank.svg" width="22"></span>
+        <span class="label">Paper Bank</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Subscriptions\subscriptions.html">
+        <span class="menu-icon"><img src="icons/subscriptions.svg" width="22"></span>
+        <span class="label">Subscriptions</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Profile\profile.html">
+        <span class="menu-icon"><img src="icons/profile.svg" width="22"></span>
+        <span class="label">Profile</span>
+    </a>
+
+    <div class="collapse-indicator">•••</div>
+</div>
+
+<script src=":sidebar.js"></script>
+</body>
+</html>

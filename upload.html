@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="C:\Users\saina\OneDrive\Desktop\website3\Home\sidebar.css">
+<title>Neon Boxes</title>
+
+
+<style>
+        body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    background:#0a0a0a;
+  }
+       
+
+    .container {
+        display: flex;
+        gap: 40px;
+    }
+
+    /* Base box styling */
+    .box {
+        width: 260px;
+        height: 260px;
+        background: #0b0b0b;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #bfffd0;
+        font-size: 20px;
+        position: relative;
+        transition: transform 0.15s ease-out;
+        perspective: 1000px;
+        overflow: hidden;
+    }
+
+    /* Neon border */
+    .box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 4px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, #00f5ff, #00ff6a);
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude;
+        pointer-events: none;
+
+        filter: drop-shadow(0 0 10px #00f5ff) drop-shadow(0 0 14px #00ff6a);
+        transition: 0.2s ease;
+    }
+
+    /* Neon glow that follows the cursor */
+    .glow {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0,255,200,0.45), transparent 70%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    /* Hover effects */
+    .box:hover .glow {
+        opacity: 1;
+    }
+
+    .box:hover {
+        transform: scale(1.05) rotateX(10deg) rotateY(10deg);
+    }
+
+    /* Icon styling */
+    .icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 0 6px #00f5ff) drop-shadow(0 0 10px #00ff6a);
+    }
+
+    .subtitle {
+        font-size: 18px;
+        color: #bfffd0;
+        letter-spacing: 1px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- BOX 1 : RESEARCH PAPERS -->
+    <div class="box" onmousemove="moveGlow(event, this)">
+        <div class="glow"></div>
+
+        <!-- PLUS ON PAPER ICON -->
+        <svg class="icon" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="url(#grad1)">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f5ff"/>
+                    <stop offset="100%" stop-color="#00ff6a"/>
+                </linearGradient>
+            </defs>
+            <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+            <line x1="12" y1="9" x2="12" y2="15"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+        </svg>
+
+        <div class="subtitle">RESEARCH PAPERS</div>
+    </div>
+
+    <!-- BOX 2 : QUERIES -->
+    <div class="box" onmousemove="moveGlow(event, this)">
+        <div class="glow"></div>
+
+        <!-- MAN WITH QUESTION MARK ICON -->
+        <svg class="icon" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="url(#grad2)">
+            <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f5ff"/>
+                    <stop offset="100%" stop-color="#00ff6a"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Head -->
+            <circle cx="12" cy="7" r="4"/>
+            <!-- Body -->
+            <path d="M6 22v-3a6 6 0 0 1 12 0v3"/>
+            <!-- Question mark -->
+            <path d="M17 4.5a2.5 2.5 0 1 0-3 2.45"/>
+            <circle cx="14" cy="10.5" r="1"/>
+        </svg>
+
+        <div class="subtitle">QUERIES</div>
+    </div>
+
+</div>
+<div class="side-menu" aria-hidden="false">
+    <div class="menu-title">Menu</div>
+
+    <a class="menu-item active" href="C:\Users\saina\OneDrive\Desktop\website3\Home\home.html">
+        <span class="menu-icon"><img src="C:\Users\saina\OneDrive\Desktop\website3\Home\icons\home.svg" width="22"></span>
+        <span class="label">Home</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Community\community.html">
+        <span class="menu-icon"><img src="icons/community.svg" width="22"></span>
+        <span class="label">Community</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\upload.html">
+        <span class="menu-icon"><img src="icons/create.svg" width="22"></span>
+        <span class="label">Create</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\paper bank\public\paperbank.html">
+        <span class="menu-icon"><img src="icons/paperbank.svg" width="22"></span>
+        <span class="label">Paper Bank</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Subscriptions\subscriptions.html">
+        <span class="menu-icon"><img src="icons/subscriptions.svg" width="22"></span>
+        <span class="label">Subscriptions</span>
+    </a>
+
+    <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Profile\profile.html">
+        <span class="menu-icon"><img src="icons/profile.svg" width="22"></span>
+        <span class="label">Profile</span>
+    </a>
+
+    <div class="collapse-indicator">•••</div>
+</div>
+
+<!-- Neon glow follow script -->
+<script>
+function moveGlow(e, box) {
+    const glow = box.querySelector('.glow');
+    const rect = box.getBoundingClientRect();
+    const x = e.clientX - rect.left - glow.offsetWidth/2;
+    const y = e.clientY - rect.top - glow.offsetHeight/2;
+
+    glow.style.left = x + 'px';
+    glow.style.top = y + 'px';
+}
+</script>
+<script src="C:\Users\saina\OneDrive\Desktop\website3\Home\sidebar.js"></script>
+
+    <script>
+        document.getElementsByClassName('subtitle').addEventListener('click', function () {
+            window.location.href = 'research-page.html';
+        });
+    </script>
+
+</body>
+</html>

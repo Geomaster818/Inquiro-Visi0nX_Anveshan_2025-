@@ -1,0 +1,119 @@
+
+/* Floating collapsing sidebar (mode C) - overlays content on hover */
+.side-menu {
+  position: fixed;
+  top: 20px;
+  left: 12px;
+  width: 70px;
+  height: calc(100vh - 40px);
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  transition: width 0.32s ease, transform 0.32s ease, box-shadow 0.32s ease;
+  z-index: 99999;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+/* when hovered or activated, expand */
+.side-menu.expanded, .side-menu:hover {
+  width: 260px;
+  transform: translateX(0);
+  backdrop-filter: blur(8px);
+}
+
+/* small logo/title that shows when expanded */
+.side-menu .menu-title {
+  color: var(--accent, #00e6f0);
+  font-weight: 700;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity .28s ease, transform .28s ease;
+  align-self: flex-start;
+  margin-left: 12px;
+}
+
+/* reveal title when expanded */
+.side-menu.expanded .menu-title, .side-menu:hover .menu-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* icon container (keeps icons visible when collapsed) */
+.menu-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--accent, #00e6f0);
+}
+
+/* menu item row */
+.menu-item {
+  width: 100%;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #e6faff;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity .28s ease, transform .28s ease, background .18s ease;
+}
+
+/* show labels when expanded */
+.side-menu.expanded .menu-item, .side-menu:hover .menu-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* show icon-only when collapsed */
+.menu-item .label { display: none; }
+.side-menu.expanded .menu-item .label, .side-menu:hover .menu-item .label { display: inline-block; }
+
+/* hover state */
+.menu-item:hover {
+  background: rgba(0,230,240,0.08);
+  border-left: 3px solid var(--accent, #00e6f0);
+  padding-left: 9px;
+}
+
+/* position close button at top-right of menu when expanded */
+.side-menu .close-btn {
+  display:none;
+  margin-left:auto;
+  background:transparent;
+  border:none;
+  color: #cdeff2;
+  cursor:pointer;
+  font-size:18px;
+}
+.side-menu.expanded .close-btn { display:block; }
+
+/* small collapsed indicator - vertical dots */
+.collapse-indicator {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: rgba(255,255,255,0.12);
+  font-size: 12px;
+  margin-top: auto;
+  margin-bottom: 6px;
+}
+
+/* on small screens, reduce size */
+@media (max-width:700px) {
+  .side-menu { left: 8px; top:12px; width:56px; }
+  .side-menu.expanded { width: 220px; }
+}

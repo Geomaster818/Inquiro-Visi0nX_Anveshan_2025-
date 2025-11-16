@@ -1,0 +1,98 @@
+/* ===== Global Styles ===== */
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background: #0d0d0f;
+    color: #e0e0e0;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.community-container {
+    width: 85%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    color: #00eaff;
+    text-shadow: 0 0 12px #00eaff;
+    animation: glowIn 1.2s ease;
+}
+
+@keyframes glowIn {
+    from { opacity: 0; text-shadow: none; }
+    to { opacity: 1; text-shadow: 0 0 12px #00eaff; }
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+    width: 100%;
+    padding: 14px;
+    margin: 30px 0;
+    border-radius: 30px;
+    background: #131317;
+    border: 1px solid #00eaff;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.search-bar::placeholder {
+    color: #6dd6ff;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 20px #00eaff;
+}
+
+/* ===== User Grid ===== */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.user-card {
+    background: #131317;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #00eaff;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: 0.35s;
+    box-shadow: 0 0 18px rgba(0, 234, 255, 0.15);
+    animation: cardFadeIn 0.7s ease;
+}
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.user-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 234, 255, 0.75);
+}
+
+.user-card img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #00eaff;
+    transition: 0.3s;
+}
+
+.user-card:hover img {
+    box-shadow: 0 0 20px #00eaff;
+}
+
+
+
+

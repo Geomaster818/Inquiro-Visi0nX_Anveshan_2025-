@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiro — Subscriptions</title>
+
+    <link rel="stylesheet" href="subscriptions.css">
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sidebar.css">
+
+</head>
+
+<body>
+<!-- Floating Sidebar (Mode C) -->
+<div class="side-menu" aria-hidden="false">
+  <div class="menu-title">Menu</div>
+
+  <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\home.html">
+    <span class="menu-icon"><img src="icons/home.svg" width="22"></span>
+    <span class="label">Home</span>
+  </a>
+
+  <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Community\community.html">
+    <span class="menu-icon"><img src="icons/community.svg" width="22"></span>
+    <span class="label">Community</span>
+  </a>
+
+  <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\upload.html">
+    <span class="menu-icon"><img src="icons/create.svg" width="22"></span>
+    <span class="label">Create</span>
+  </a>
+
+  <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\paper bank\public\paperbank.html">
+    <span class="menu-icon"><img src="icons/paperbank.svg" width="22"></span>
+    <span class="label">Paper Bank</span>
+  </a>
+
+  <!-- ACTIVE PAGE HERE -->
+  <a class="menu-item active" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Subscriptions\subscriptions.html">
+    <span class="menu-icon"><img src="icons/subscriptions.svg" width="22"></span>
+    <span class="label">Subscriptions</span>
+  </a>
+
+  <a class="menu-item" href="C:\Users\saina\OneDrive\Desktop\website3\Home\Profile\profile.html">
+    <span class="menu-icon"><img src="icons/profile.svg" width="22"></span>
+    <span class="label">Profile</span>
+  </a>
+
+  <div class="collapse-indicator">•••</div>
+</div>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1 class="title">Subscriptions</h1>
+        <p class="subtitle">Upgrade your research experience</p>
+    </div>
+
+    <!-- PLAN GRID -->
+    <div class="plan-grid">
+
+        <!-- $8 Plan -->
+        <div class="plan-card" data-plan="8">
+            <h2 class="plan-title">$8 Plan — Premium</h2>
+            <ul class="plan-features">
+                <li>Upload up to <b>10 research papers</b></li>
+                <li>Connect with up to <b>30 scientists</b></li>
+                <li>Basic support</li>
+            </ul>
+            <button class="select-btn">Choose $8</button>
+        </div>
+
+        <!-- $10 Plan -->
+        <div class="plan-card" data-plan="10">
+            <h2 class="plan-title">$10 Plan — Premium+</h2>
+            <ul class="plan-features">
+                <li>Upload up to <b>50 research papers</b></li>
+                <li>Connect with <b>200+ scientists</b></li>
+                <li>Early access to new tools</li>
+                <li>Priority support</li>
+            </ul>
+            <button class="select-btn">Choose $10</button>
+        </div>
+
+    </div>
+
+    <!-- PAYMENT SECTION -->
+    <div class="payment-panel">
+
+        <h2 class="pay-title">Payment Method</h2>
+
+        <div class="payment-options">
+            <button class="pay-option active" data-method="card">Card</button>
+            <button class="pay-option" data-method="upi">UPI</button>
+        </div>
+
+        <!-- Card Fields -->
+        <div id="cardFields" class="field-group active">
+            <input type="text" placeholder="Card Number (16 digits)" id="cardNum">
+            <input type="text" placeholder="Name on Card" id="cardName">
+            <div class="two-fields">
+                <input type="text" placeholder="MM/YY" id="exp">
+                <input type="text" placeholder="CVV" id="cvv">
+            </div>
+        </div>
+
+        <!-- UPI Fields -->
+        <div id="upiFields" class="field-group">
+            <input type="text" placeholder="yourname@upi" id="upi">
+        </div>
+
+        <button id="payBtn" class="pay-btn">Pay Now</button>
+
+    </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-box">
+        <h2>Payment Successful</h2>
+        <p>Your subscription is now active.</p>
+        <button id="closeModal" class="close-btn">OK</button>
+    </div>
+</div>
+
+<script src="subscriptions.js"></script>
+</body>
+<script src="sidebar.js"></script>
+</html>

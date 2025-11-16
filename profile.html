@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Profile — Cleaned UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="2.5" stroke="#002426" stroke-width="2"/>
+            <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+            stroke="#002426" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="title" id="pageTitle">Profile</div>
+          <div class="small">User details</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn ghost" href="community.html">← Community</a>
+        <a id="messageBtn" class="btn" href="#">Message</a>
+      </div>
+    </div>
+
+    <div class="panel profile" id="profileArea">
+      <div class="profile-left">
+        <div class="profile-pic">
+          <img id="pic" src="" alt="Profile picture" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div class="profile-name" id="pname"></div>
+        <div id="proles" class="roles"></div>
+      </div>
+
+      <div>
+        <div class="section">
+          <div class="section-title">About</div>
+          <div id="about" class="hint"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Research Papers</div>
+          <div id="papers"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Articles</div>
+          <div id="articles"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* === NEW DARK-THEME COLORED GENERIC AVATARS === */
+const avatar_sarah = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%230d6b75'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_mitchell = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%23451a5d'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_smriti = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%230f5950'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_louis = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%2328356b'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+/* === PROFILE DATA WITH DARK THEME AVATARS === */
+const sampleProfiles = {
+  'sarah-lee': {
+    name: 'Sarah Lee',
+    pic: avatar_sarah,
+    roles: ['Researcher','HCI'],
+    about: 'I research human-centered machine learning and model interpretability. My work focuses on usable ML tools.',
+    papers: [
+      {title:'Interpretable Embeddings',venue:'CHI 2024'},
+      {title:'Active Learning in HIL',venue:'NeurIPS Workshop 2023'}
+    ],
+    articles: [{title:'Designing ML Tools for Non-experts'}]
+  },
+
+  'mitchell-johnson': {
+    name: 'Mitchell Johnson',
+    pic: avatar_mitchell,
+    roles: ['Professor','Robotics'],
+    about: 'I lead research on autonomous navigation and multi-agent systems.',
+    papers: [
+      {title:'Consensus Control for Swarms',venue:'IEEE Robotics 2023'}
+    ],
+    articles: [{title:'When Robots Meet Humans'}]
+  },
+
+  'smriti-anand': {
+    name: 'Smriti Patel',
+    pic: avatar_smriti,
+    roles: ['Student','AI Ethics'],
+    about: 'I am an undergraduate researching AI ethics and fairness in recommender systems.',
+    papers: [
+      {title:'Assessing Bias in Collaborative Filters',venue:'URC 2024'}
+    ],
+    articles: [{title:'Fairness in Small Datasets'}]
+  },
+
+  'louis-qadri': {
+    name: 'Louis Qadri',
+    pic: avatar_louis,
+    roles: ['Researcher','Quantum Computing'],
+    about: 'My focus is on quantum algorithms and resource estimation for NISQ devices.',
+    papers: [
+      {title:'Quantum Approximation Algorithms',venue:'QIP 2024'}
+    ],
+    articles: [{title:'Getting Started with Quantum Simulators'}]
+  }
+};
+
+function getParam(key){ return new URLSearchParams(location.search).get(key); }
+
+(function init(){
+  const id = getParam('user') || 'sarah-lee';
+  const p = sampleProfiles[id];
+  if(!p){
+    document.getElementById('pname').textContent = 'Profile not found';
+    return;
+  }
+
+  document.getElementById('pname').textContent = p.name;
+  document.getElementById('pic').src = p.pic;
+
+  const roles = document.getElementById('proles');
+  roles.innerHTML = '';
+  p.roles.forEach(r=>{
+    const d = document.createElement('div');
+    d.className = 'role-pill';
+    d.textContent = r;
+    roles.appendChild(d);
+  });
+
+  document.getElementById('about').textContent = p.about;
+
+  const papers = document.getElementById('papers');
+  papers.innerHTML = '';
+  p.papers.forEach(pp=>{
+    const div = document.createElement('div');
+    div.className='list-item';
+    div.innerHTML =
+      `<div>
+        <div style="font-weight:700">${pp.title}</div>
+        <div class="item-meta">${pp.venue||''}</div>
+      </div>
+      <div><a class="small-link" href="#">View</a></div>`;
+    papers.appendChild(div);
+  });
+
+  const arts = document.getElementById('articles');
+  arts.innerHTML = '';
+  p.articles.forEach(a=>{
+    const div = document.createElement('div');
+    div.className='list-item';
+    div.innerHTML =
+      `<div style="font-weight:700">${a.title}</div>
+       <div><a class="small-link" href="#">Read</a></div>`;
+    arts.appendChild(div);
+  });
+
+  document.getElementById('messageBtn').href = 'message.html?user=' + encodeURIComponent(id);
+})();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Messages — Cleaned UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="2.5" stroke="#002426" stroke-width="2"/>
+            <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+              stroke="#002426" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="title">Messages</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn ghost" href="community.html">← Community</a>
+      </div>
+    </div>
+
+    <div class="panel messages">
+      <div>
+        <!-- DROPDOWN REMOVED -->
+        <input id="convSearch" class="search" placeholder="Search people...">
+        <div id="convList" class="conv-list"></div>
+      </div>
+
+      <div class="chat-panel">
+        <div class="chat-header">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="conv-avatar"><img id="chatAvatar" src="" style="width:100%;height:100%;object-fit:cover"></div>
+            <div>
+              <div id="chatName" style="font-weight:700"></div>
+              <div id="chatRole" class="small"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="chatBody" class="chat-body"></div>
+
+        <div class="chat-footer">
+          <input id="chatInput" class="input" placeholder="Type a message..." />
+          <button id="sendBtn" class="send">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* === DARK-THEME COLORED GENERIC AVATARS (MATCHING ALL PAGES) === */
+const avatar_sarah = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%230d6b75'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_mitchell = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%23451a5d'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_smriti = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%230f5950'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+const avatar_louis = "data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='16' fill='%2328356b'/><path d='M50 28a14 14 0 1 1 0 28a14 14 0 0 1 0-28zM26 78c0-14 12-26 26-26s26 12 26 26' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>";
+
+/* === USER DATA WITH GENERIC AVATARS === */
+const sampleUsers = [
+  { id: 'sarah-lee', name: 'Sarah Lee', role: 'Researcher • HCI', avatar: avatar_sarah },
+  { id: 'mitchell-johnson', name: 'Mitchell Johnson', role: 'Professor • Robotics', avatar: avatar_mitchell },
+  { id: 'smriti-anand', name: 'Smriti Patel', role: 'Student • AI Ethics', avatar: avatar_smriti },
+  { id: 'louis-qadri', name: 'Louis Qadri', role: 'Researcher • Quantum Computing', avatar: avatar_louis }
+];
+
+/* DEFAULT USER (you) — same as before */
+let me = sampleUsers[0].id; // Sarah
+let partner = sampleUsers[1].id; // Default convo: Mitchell
+
+const convList = document.getElementById('convList');
+const chatBody = document.getElementById('chatBody');
+const chatAvatar = document.getElementById('chatAvatar');
+const chatName = document.getElementById('chatName');
+const chatRole = document.getElementById('chatRole');
+
+function renderConv(filter='') {
+  convList.innerHTML = '';
+
+  sampleUsers.forEach(u => {
+    if (u.id === me) return;
+    if (filter && !u.name.toLowerCase().includes(filter.toLowerCase())) return;
+
+    const d = document.createElement('div');
+    d.className = 'conv-item' + (u.id === partner ? ' active' : '');
+
+    d.innerHTML = `
+      <div class="conv-avatar">
+        <img src="${u.avatar}">
+      </div>
+      <div>
+        <div class="conv-name">${u.name}</div>
+        <div class="conv-sub">${u.role}</div>
+      </div>
+    `;
+
+    d.addEventListener('click', () => {
+      partner = u.id;
+      openConversation();
+      renderConv();
+    });
+
+    convList.appendChild(d);
+  });
+}
+
+function openConversation() {
+  const p = sampleUsers.find(u => u.id === partner);
+
+  chatAvatar.src = p.avatar;
+  chatName.textContent = p.name;
+  chatRole.textContent = p.role;
+
+  chatBody.innerHTML = '';
+
+  // Default example conversation
+  const demo = [
+    { from: partner, text: 'Hey, just checked your latest work.' },
+    { from: me, text: 'Thanks! Let me know what you think.' },
+    { from: partner, text: 'Would love to collaborate sometime.' }
+  ];
+
+  demo.forEach(m => appendMessage(m));
+}
+
+function appendMessage(m) {
+  const row = document.createElement('div');
+  row.className = 'msg ' + (m.from === me ? 'me' : '');
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble ' + (m.from === me ? 'me' : '');
+  bubble.textContent = m.text;
+
+  row.appendChild(bubble);
+  chatBody.appendChild(row);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+document.getElementById('sendBtn').addEventListener('click', () => {
+  const txt = document.getElementById('chatInput').value.trim();
+  if (!txt) return;
+
+  appendMessage({ from: me, text: txt });
+  document.getElementById('chatInput').value = '';
+});
+
+document.getElementById('convSearch').addEventListener('input', e => {
+  renderConv(e.target.value);
+});
+
+/* INIT */
+renderConv();
+openConversation();
+</script>
